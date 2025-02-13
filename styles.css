@@ -86,7 +86,7 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-    border-color: #3498db;
+    border-color: #014826;
     outline: none;
 }
 
@@ -94,7 +94,7 @@ input[type="password"]:focus {
 button {
     width: 100%;
     padding: 12px;
-    background-color: #3498db;
+    background-color: #014826;
     color: white;
     border: none;
     border-radius: 5px;
@@ -104,7 +104,7 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #1c6c45;
 }
 
 /* Links for Forgot Password and Sign Up */
@@ -116,14 +116,14 @@ button:hover {
 }
 
 .links a {
-    color: #3498db;
+    color: #014826;
     font-size: 14px;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .links a:hover {
-    color: #2980b9;
+    color: #014826;
 }
 
 /* Media Query for Responsiveness */
@@ -144,4 +144,140 @@ button:hover {
     p {
         font-size: 14px;
     }
+
+    /* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .logo {
+    width: 120px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .btn {
+    padding: 10px 20px;
+    background: #014826;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url("images/crisis_background.jpg") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.cta-buttons .btn {
+    padding: 12px 20px;
+    background: #f39c12;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Goals Section */
+.goals {
+    text-align: center;
+    padding: 50px;
+    background: #fff;
+}
+
+.goals h2 {
+    font-size: 30px;
+    color: #333;
+}
+
+.goals p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px;
+    background: #3498db;
+    color: white;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    width: 200px;
+}
+
+.stat-box h3 {
+    font-size: 22px;
+}
+
+.stat-box p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 }
