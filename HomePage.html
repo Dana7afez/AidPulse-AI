@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #014826;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            width: 120px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: #014826;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .navbar .btn {
+            padding: 10px 20px;
+            background: #014826;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url("images/crisis_background.jpg") no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .cta-buttons .btn {
+            padding: 12px 20px;
+            background: #014826;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .inventory {
+            text-align: center;
+            padding: 50px;
+            background: #fff;
+        }
+
+        .inventory h2 {
+            font-size: 30px;
+            color: #014826;
+            margin-bottom: 20px;
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .inventory-item {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px;
+            background: #014826;
+            color: white;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 200px;
+        }
+
+        .stat-box h3 {
+            font-size: 22px;
+        }
+
+        .stat-box p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <a href="#" class="btn">Get Started</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to AidPulse</h1>
+            <p>Providing Aid, Saving Lives</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn">Register Medical ID</a>
+                <a href="#" class="btn">Request Aid</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="inventory">
+        <h2>Inventory</h2>
+        <div class="inventory-grid">
+            <div class="inventory-item">Food Supplies</div>
+            <div class="inventory-item">Shelter Kits</div>
+            <div class="inventory-item">Medical Aid</div>
+        </div>
+    </section>
+    
+    <section class="stats">
+        <div class="stat-box">
+            <h3>Active Crises</h3>
+            <p>12</p>
+        </div>
+        <div class="stat-box">
+            <h3>People Helped</h3>
+            <p>50,000+</p>
+        </div>
+        <div class="stat-box">
+            <h3>Resources Distributed</h3>
+            <p>100,000+</p>
+        </div>
+    </section>
+</body>
+</html>
