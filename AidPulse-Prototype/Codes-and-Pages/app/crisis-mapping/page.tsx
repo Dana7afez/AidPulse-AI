@@ -8,7 +8,7 @@ import { AlertTriangle, AlertCircle, Package, Users, Globe, ArrowRight } from "l
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 // This would typically come from your environment variables
-const GOOGLE_MAPS_API_KEY = "AIzaSyC_BXzCAeGoGZPAMu0Z9EuQjqXpF2Bt1rc"
+const GOOGLE_MAPS_API_KEY = "AIzaSyDIW4dfXz2-JSI1WOBEZUEmwRMTuD7bVlE"
 
 interface CrisisZone {
   id: string
