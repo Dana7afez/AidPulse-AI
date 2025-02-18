@@ -1,26 +1,34 @@
+"use client"
+
 import "./globals.css"
 import { Inter } from "next/font/google"
 import { Sidebar } from "@/components/sidebar"
 import type React from "react"
+import { useEffect, useState } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
-
-export const metadata = {
-  title: "AidPulse - Crisis Response Platform",
-  description: "AI-powered humanitarian aid and crisis response platform",
-    generator: 'v0.dev'
-}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // Only show sidebar if not on login page
-  const isLoginPage = typeof window !== "undefined" && window.location.pathname === "/"
+  const [isLoginPage, setIsLoginPage] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLoginPage(window.location.pathname === "/login-page");
+    }
+  }, []);
 
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.png" />
+        <title>AidPulse - Crisis Response Platform</title>
+        <meta name="description" content="AI-powered humanitarian aid and crisis response platform" />
+        <meta name="generator" content="v0.dev" />
+      </head>
       <body className={inter.className}>
         <div className="flex h-screen">
           {!isLoginPage && <Sidebar />}
@@ -30,7 +38,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
