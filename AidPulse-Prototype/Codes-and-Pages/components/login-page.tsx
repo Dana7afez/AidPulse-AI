@@ -61,9 +61,9 @@ export default function LoginPage() {
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aswq-NxAnQ5TqA5NoHEKDDa6HNOl4KrngEo.png"
               alt="AidPulse AI Logo"
-              width={200}
-              height={60}
-              className="h-12 w-auto"
+              width={250} // Set the width to medium size
+              height={75} // Adjust the height accordingly
+              className="h-auto w-auto"
               priority
             />
           </div>
@@ -121,4 +121,3 @@ export default function LoginPage() {
     </div>
   )
 }
-
