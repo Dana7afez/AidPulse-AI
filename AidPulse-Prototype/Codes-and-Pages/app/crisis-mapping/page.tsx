@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, AlertCircle, Package, Users, Globe, ArrowRight } from "lucide-react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { GoogleMap, LoadScript, HeatmapLayer, useJsApiLoader } from "@react-google-maps/api"
 
 // This would typically come from your environment variables
 const GOOGLE_MAPS_API_KEY = "AIzaSyDIW4dfXz2-JSI1WOBEZUEmwRMTuD7bVlE"
@@ -76,6 +77,12 @@ export default function CrisisMappingPage() {
   const [totalAffected, setTotalAffected] = useState(0)
   const [activeZones, setActiveZones] = useState(0)
   const [crisisZones, setCrisisZones] = useState(mockCrisisZones)
+  const [heatmapData, setHeatmapData] = useState<google.maps.visualization.WeightedLocation[]>([])
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: ["visualization"]
+  })
 
   useEffect(() => {
     // Calculate totals
@@ -100,6 +107,16 @@ export default function CrisisMappingPage() {
     return () => clearInterval(interval)
   }, [crisisZones])
 
+  useEffect(() => {
+    if (isLoaded) {
+      const data = crisisZones.map(zone => ({
+        location: new google.maps.LatLng(zone.coordinates.lat, zone.coordinates.lng),
+        weight: zone.affectedPeople,
+      }))
+      setHeatmapData(data)
+    }
+  }, [isLoaded, crisisZones])
+
   const getRiskBadgeColor = (risk: string) => {
     switch (risk) {
       case "high":
@@ -112,6 +129,13 @@ export default function CrisisMappingPage() {
         return "bg-gray-500"
     }
   }
+
+  const gradient = [
+    'rgba(0, 255, 0, 0)',
+    'rgba(0, 255, 0, 1)',
+    'rgba(255, 255, 0, 1)',
+    'rgba(255, 0, 0, 1)',
+  ]
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
@@ -180,14 +204,20 @@ export default function CrisisMappingPage() {
           <CardTitle>Crisis Zone Map</CardTitle>
         </CardHeader>
         <CardContent className="h-[500px] relative">
-          <iframe
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            loading="lazy"
-            allowFullScreen
-            src={`https://www.google.com/maps/embed/v1/view?key=${GOOGLE_MAPS_API_KEY}&center=0,0&zoom=2`}
-          ></iframe>
+          {loadError ? (
+            <div>Error loading map</div>
+          ) : !isLoaded ? (
+            <div>Loading map...</div>
+          ) : (
+            <GoogleMap
+              id="map"
+              mapContainerStyle={{ width: "100%", height: "100%" }}
+              center={{ lat: 0, lng: 0 }}
+              zoom={2}
+            >
+              <HeatmapLayer data={heatmapData} options={{ radius: 50, gradient }} />
+            </GoogleMap>
+          )}
         </CardContent>
       </Card>
 
@@ -314,4 +344,3 @@ export default function CrisisMappingPage() {
     </div>
   )
 }
-
